@@ -14,7 +14,7 @@ public class Rocketship{
       System.out.println(" +------+");
       System.out.println(" |      |");
       System.out.println(" |      |");
-    
+
     }
     if (place.equals("triangle")) {
       System.out.println("   /  \\  ");
@@ -26,10 +26,4 @@ public class Rocketship{
 
 
 }//end class
-/*
-PLAN
-function for the top and bottom triangles
-another function for the lines on the top and bottom
-
-LOOK at it horizontally not vertically
-*/
+//not done
