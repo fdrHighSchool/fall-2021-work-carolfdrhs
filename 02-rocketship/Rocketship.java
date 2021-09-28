@@ -4,8 +4,7 @@ public class Rocketship{
 
     ship("triangle");
     ship("box");
-    System.out.println(" |United|");
-    System.out.println(" |States|");
+    System.out.println(" |United| \n |States|");
     ship("box");
     ship("triangle");
 
@@ -13,16 +12,10 @@ public class Rocketship{
 
   public static void ship(String place) {
     if (place.equals("box")) {
-      System.out.println(" +------+");
-      System.out.println(" |      |");
-      System.out.println(" |      |");
-      System.out.println(" +------+");
-
+      System.out.println(" +------+ \n |      | \n |      | \n +------+");
     }
     if (place.equals("triangle")) {
-      System.out.println("   /  \\  ");
-      System.out.println("  /    \\ ");
-      System.out.println(" /      \\ ");
+      System.out.println("   /  \\ \n  /    \\ \n /      \\  ");
     }
 
   }
