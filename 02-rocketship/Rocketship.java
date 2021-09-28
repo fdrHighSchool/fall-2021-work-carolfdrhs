@@ -3,17 +3,20 @@ public class Rocketship{
   public static void main(String[] args){
 
     ship("triangle");
-    ship("middle");
-    ship("middle");
-    ship("middle");
+    ship("box");
+    System.out.println(" |United|");
+    System.out.println(" |States|");
+    ship("box");
+    ship("triangle");
 
   }//end main
 
-  public static void ship(String place, String text) {
-    if (place.equals("middle")) {
+  public static void ship(String place) {
+    if (place.equals("box")) {
       System.out.println(" +------+");
       System.out.println(" |      |");
       System.out.println(" |      |");
+      System.out.println(" +------+");
 
     }
     if (place.equals("triangle")) {
@@ -26,4 +29,3 @@ public class Rocketship{
 
 
 }//end class
-//not done
