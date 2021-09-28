@@ -2,18 +2,13 @@ public class Rocketship{
 
   public static void main(String[] args){
     System.out.println("   /  \\ \n  /    \\ \n /      \\ \n +------+ \n |      | \n |      | \n +------+ \n |United| \n |States| \n +------+ \n |      | \n |      | \n +------+ \n   /  \\ \n  /    \\ \n /      \\  ");
-
-  }
+    //the short way
+  }//end main
 }//end class
 
 
-
-
-
-
-
 /*
-
+the longer way that looks more fancy
 public class Rocketship{
 
   public static void main(String[] args){
