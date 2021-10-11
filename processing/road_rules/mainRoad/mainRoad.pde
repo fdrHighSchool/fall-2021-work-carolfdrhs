@@ -12,9 +12,6 @@ void draw() {
   background(50);
   fill(255);
   
-  c1.straight();//using the function
-  c1.display();//using the function
-  
   
   createIntersectLR(0, 240);
   createIntersectLR(0, 720);
@@ -22,14 +19,14 @@ void draw() {
   createIntersectTB(775, 10);
   createIntersectTB(775, 530);
   
-  
-  
   createLine(240, 300, 163);
-  createLine(305, 70, 180); //translation is relative
+  createLine(240, 320, 163); //matrix solves relativety
   
-  createLine(460, 400, 90);
-  createLine(305, 75, 180);
+  createLine(490, 570, 73);
+  createLine(510, 570, 73);
   
+  c1.straight();//using the function
+  c1.display();//using the function
   
 }
 void createIntersectLR(float direction, float marginLeft) {
@@ -55,11 +52,13 @@ void createIntersectTB(float justifyX, float justifyY) {
 }
 
 void createLine(float left, float top, float rotation) {
+  pushMatrix();
   translate(left, top);
   rotate(radians(rotation));
   stroke(255,255,0);
   strokeWeight(10);
   line(0, 0, 300, 90);
+  popMatrix();
 }
 
 
