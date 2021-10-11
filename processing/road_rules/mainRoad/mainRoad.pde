@@ -1,10 +1,20 @@
+PImage photo;
+
+Animation c1;
+
 void setup() {
-  size(900, 700);
+  size(1000, 900);
   strokeCap(0);
+  photo = loadImage("car face right.png");//loading the car image
+  c1 = new Animation(-300,150,215,128);
 }
 void draw() {
   background(50);
   fill(255);
+  
+  c1.straight();//using the function
+  c1.display();//using the function
+  
   
   createIntersectLR(0, 240);
   createIntersectLR(0, 720);
@@ -13,11 +23,13 @@ void draw() {
   createIntersectTB(775, 530);
   
   
+  
   createLine(240, 300, 163);
   createLine(305, 70, 180); //translation is relative
   
   createLine(460, 400, 90);
   createLine(305, 75, 180);
+  
   
 }
 void createIntersectLR(float direction, float marginLeft) {
@@ -49,4 +61,7 @@ void createLine(float left, float top, float rotation) {
   strokeWeight(10);
   line(0, 0, 300, 90);
 }
+
+
+
 //git 
