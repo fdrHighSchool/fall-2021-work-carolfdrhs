@@ -1,12 +1,18 @@
-PImage photo;
+PImage car1;
+PImage[] car2 = new PImage[3];
 
 Animation c1;
+Animation c2;
 
 void setup() {
   size(1000, 900);
   strokeCap(0);
-  photo = loadImage("car face right.png");//loading the car image
-  c1 = new Animation(-300,150,215,128);
+  car1 = loadImage("car face right.png");//loading the car image
+  for (int i =0; i<car2.length;i++){
+  car2[i] = loadImage("car"+i+".png");
+  }
+  c1 = new Animation(-300,450,215,128);
+  c2 = new Animation(650,1000,215,128);
 }
 void draw() {
   background(50);
@@ -26,7 +32,11 @@ void draw() {
   createLine(510, 570, 73);
   
   c1.straight();//using the function
-  c1.display();//using the function
+  c1.display1();//using the function
+  c2.up();
+  c2.display2();
+  c2.turn();
+  
   
 }
 void createIntersectLR(float direction, float marginLeft) {
