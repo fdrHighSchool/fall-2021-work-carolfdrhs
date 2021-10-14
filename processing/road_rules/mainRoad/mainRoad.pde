@@ -33,8 +33,9 @@ void draw() {
   background(50);
   fill(255);
 
+//using functions
   road();
-  c1.display1();//using the function
+  c1.display1();
   c2.display2();
 
   
@@ -66,7 +67,7 @@ void createIntersectLR(float direction, float marginLeft) {
   rotate(direction);
   int begin_y = 20;
   for(int i = 0; i < 12; i++) {
-    int increment_y = begin_y += 40;
+    int increment_y = begin_y += 40;//the space between the rectangles
     fill(255);
     rect(marginLeft, increment_y, 40, 20);
   }

@@ -4,10 +4,8 @@ class Animation {
   float y;
   float Width;
   float Height;
-  float theta;
   float index = 0; 
-  
-  
+ 
   
   Animation(float tempX, float tempY, float tempW, float tempH) {
     //setting a temporary X,Y,width,and height 
@@ -75,6 +73,7 @@ class Animation {
     } else { 
         loop();
         up(3.2);
+        
         if(y <= 200) {
           translate(x,y);
           rotate(radians(270));
@@ -83,6 +82,7 @@ class Animation {
           up(-4.5);
           straight(-6);
         }
+        
       }//end else
       
     //end if
