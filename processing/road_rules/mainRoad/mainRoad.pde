@@ -1,25 +1,48 @@
 PImage car1;
 PImage[] car2 = new PImage[3];
+int numFrames = 0;
+
 
 Animation c1;
 Animation c2;
+
 
 void setup() {
   size(1000, 900);
   strokeCap(0);
   car1 = loadImage("car face right.png");//loading the car image
+  
   for (int i =0; i<car2.length;i++){
     if(i != 1) {
       car2[i] = loadImage("car"+i+".png");
-    }
+    } //loads the images of the array
   }
+  //frameRate(60);
+  
   c1 = new Animation(-300,450,215,128);
   c2 = new Animation(620,1000,215,128);
-}
+  //numFrames++;
+  //numFrames %= car2.length;
+  //image(car2[numFrames],0,0);
+  
+
+}//end setup
+
+
 void draw() {
   background(50);
   fill(255);
 
+  road();
+  c1.display1();//using the function
+  c2.display2();
+
+  
+}//end draw
+
+
+//ROAD CREATION
+void road(){
   createIntersectLR(0, 240);
   createIntersectLR(0, 720);
   
@@ -34,9 +57,8 @@ void draw() {
   
   createLine(490, 570, 73);
   createLine(510, 570, 73);
-
-  c1.display1();//using the function
-  c2.display2();
+  
+  
   
 }
 void createIntersectLR(float direction, float marginLeft) {
