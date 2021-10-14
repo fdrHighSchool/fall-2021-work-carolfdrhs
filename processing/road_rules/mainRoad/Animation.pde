@@ -20,14 +20,9 @@ class Animation {
   }//end animation
   
   
-  void straightRight(){
-    x += 4;
+  void straight(int count){
+    x += count;
   }//end straightright
-  
-  
-  void straightLeft(){
-    x -= 4;
-  }//end straightLeft
   
   
   void display1(){
@@ -35,11 +30,18 @@ class Animation {
     image(car1,x,y,Width,Height);//the image is shown
     
     if(x <= 400) {
-      straightRight();
-      
-      if(x == 400 && y == 450) {
+      straight(4);
+      if(x == 400) {
         noLoop();//stops the loop
-      }//end if
+        delay(500);
+        delay(3000);
+      }
+      
+      if(y <= 200) {
+        
+        loop();
+        straight(6);
+      }
       
     }//end if
     loop();//loops
@@ -48,40 +50,45 @@ class Animation {
   
   
   
-  void up() {
-    y -= 3;
+  void up(float count) {
+    y -= count;
   }//end up
   
   
   void display2() {
     pushMatrix();
     imageMode(CENTER);//the image is centered at the point given;
-    translate(x, y);
-    image(car2[0],0,0,Height,Width);//the image is shown
+    //translate(x, y);
+    //rotate(radians(270));
+    image(car2[0],x,y,Height,Width);//the image is shown
     //println(y);
     
     if(y == 400) {
       noLoop();
-      //delay(2000); //stops the car
+      delay(4000); //stops the car
       
       if(y == 400) {
         loop();
-        up();
+        up(3.2);
       }//end if
       
     } else { 
         loop();
-        up();
+        up(3.2);
+        if(y <= 200) {
+          translate(x,y);
+          rotate(radians(270));
+          noLoop();
+          loop();
+          up(-4.5);
+          straight(-6);
+        }
       }//end else
+      
+    //end if
     popMatrix();
     
-    if(y <= 200) {
-      //noLoop();
-      //redraw();
-      //translate(x, y);
-      //rotate(PI/3);
-      
-    }//end if
+    
    
     
   }//end display 2
