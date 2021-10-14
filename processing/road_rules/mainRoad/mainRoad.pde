@@ -9,16 +9,17 @@ void setup() {
   strokeCap(0);
   car1 = loadImage("car face right.png");//loading the car image
   for (int i =0; i<car2.length;i++){
-  car2[i] = loadImage("car"+i+".png");
+    if(i != 1) {
+      car2[i] = loadImage("car"+i+".png");
+    }
   }
   c1 = new Animation(-300,450,215,128);
-  c2 = new Animation(650,1000,215,128);
+  c2 = new Animation(620,1000,215,128);
 }
 void draw() {
   background(50);
   fill(255);
-  
-  
+
   createIntersectLR(0, 240);
   createIntersectLR(0, 720);
   
@@ -26,22 +27,21 @@ void draw() {
   createIntersectTB(775, 530);
   
   createLine(240, 300, 163);
-  createLine(240, 320, 163); //matrix solves relativety
+  createLine(240, 320, 163);
+  
+  createLine(width+80, 300, 163);
+  createLine(width+80, 320, 163);
   
   createLine(490, 570, 73);
   createLine(510, 570, 73);
-  
-  c1.straight();//using the function
+
   c1.display1();//using the function
-  c2.up();
   c2.display2();
-  c2.turn();
-  
   
 }
 void createIntersectLR(float direction, float marginLeft) {
   noStroke();
-  rotate(direction); //optional?
+  rotate(direction);
   int begin_y = 20;
   for(int i = 0; i < 12; i++) {
     int increment_y = begin_y += 40;
@@ -70,7 +70,3 @@ void createLine(float left, float top, float rotation) {
   line(0, 0, 300, 90);
   popMatrix();
 }
-
-
-
-//git 
