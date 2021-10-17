@@ -27,9 +27,9 @@ class Animation {
     imageMode(CENTER);//the image is centered at the point given
     image(car1,x,y,Width,Height);//the image is shown
     
-    if(x <= 400) {
+    if(x <= 120) {
       straight(4);
-      if(x == 400) {
+      if(x == 120) {
         noLoop();//stops the loop
         delay(500);
         delay(3000);
