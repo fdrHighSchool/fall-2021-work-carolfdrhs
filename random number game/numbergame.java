@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.Random;
 
 
-class Main {
+class numbergame {
   public static void main(String[] args) {
     //ask user for their name
     Scanner askName = new Scanner(System.in);
