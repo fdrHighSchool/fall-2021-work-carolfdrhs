@@ -6,45 +6,45 @@ class numbergame {
   static Scanner ask = new Scanner(System.in);
 
   public static void main(String[] args) {
-    //ask user for their name
-    System.out.println("What is your name?");
-    String userName = ask.nextLine();
+    int loop =1;
 
     do{//restart loop
       //ask user for difficulty
 
-      System.out.println("Hello " + userName + ", what difficulty would you like when playing this number guessing game? \neasy \nmedium \nhard \ncustom");
+      System.out.println("Hello, what difficulty would you like when playing this number guessing game? \neasy \nmedium \nhard \ncustom \nquit");
       String difficulty = ask.nextLine();
       difficulty = difficulty.toLowerCase(); //in case of capital letters
 
 
     //print ending statement when user wins
       if (difficulty.equals("easy")) {
-        System.out.println("Correct "+ userName + ", it took " + gameStart(1,10) + " tries");
+        gameStart(1,10);
       }
       if (difficulty.equals("medium")) {
-        System.out.println("Correct "+ userName + ", it took " + gameStart(1,100) + " tries");
+        gameStart(1,100);
       }
       if (difficulty.equals("hard")) {
-        System.out.println("Correct "+ userName + ", it took " + gameStart(1,1000) + " tries");
+        gameStart(1,1000);
       }
       if (difficulty.equals("custom")) {
         System.out.println("choose a number to be the maximum");
         int customPick = ask.nextInt();
-        System.out.println("Correct "+ userName + ", it took " + gameStart(1,customPick) + " tries");
+        gameStart(1,customPick);
       }
       if (difficulty.equals("quit")){
         break;
       }
 
+
+
     }
-    while ();//in progress
+    while (loop !=0);//in progress
   }
 
 
 
 //game function
-  public static int gameStart(int min, int max) {
+  public static void gameStart(int min, int max) {
     //find random number between the ranges
     Random random = new Random();
     int number = random.nextInt(max) + 1;
@@ -77,7 +77,7 @@ class numbergame {
     }
     while (guess != number);
 
-    return(numGuess);
+    System.out.println("Correct, it took " + numGuess + " tries");
 
 
   }
