@@ -6,12 +6,11 @@ class numbergame {
   static Scanner ask = new Scanner(System.in);
 
   public static void main(String[] args) {
-    int loop =1;
+    String restart = "";
 
     do{//restart loop
       //ask user for difficulty
-
-      System.out.println("Hello, what difficulty would you like when playing this number guessing game? \neasy \nmedium \nhard \ncustom \nquit");
+      System.out.println("Hello, what difficulty would you like when playing this number guessing game? \neasy \nmedium \nhard \ncustom");
       String difficulty = ask.nextLine();
       difficulty = difficulty.toLowerCase(); //in case of capital letters
 
@@ -31,14 +30,14 @@ class numbergame {
         int customPick = ask.nextInt();
         gameStart(1,customPick);
       }
-      if (difficulty.equals("quit")){
-        break;
-      }
+      System.out.println("would you like to play again? (yes or no)");
+      restart = ask.nextLine();
+      restart = restart.toLowerCase();
 
 
 
     }
-    while (loop !=0);//in progress
+    while (!restart.equals("no"));//in progress
   }
 
 
@@ -60,6 +59,7 @@ class numbergame {
     int minNum = min;
 
     do{
+
       if (guess > number) {
         maxNum = guess - 1;
         System.out.println("Wrong too high! Pick another number from " + minNum + "-" + maxNum);
@@ -73,6 +73,7 @@ class numbergame {
 
       }
       numGuess++;
+    
 
     }
     while (guess != number);
