@@ -3,6 +3,7 @@ import java.util.Random;
 
 
 class numbergame {
+  //global scanner
   static Scanner ask = new Scanner(System.in);
 
   public static void main(String[] args) {
@@ -18,27 +19,29 @@ class numbergame {
     //print ending statement when user wins
       if (difficulty.equals("easy")) {
         gameStart(1,10);
-      }
-      if (difficulty.equals("medium")) {
+      }//end if
+      else if (difficulty.equals("medium")) {
         gameStart(1,100);
-      }
-      if (difficulty.equals("hard")) {
+      }//end else if
+      else if (difficulty.equals("hard")) {
         gameStart(1,1000);
-      }
-      if (difficulty.equals("custom")) {
+      }//end else if
+      else if (difficulty.equals("custom")) {
         System.out.println("choose a number to be the maximum");
         int customPick = ask.nextInt();
         gameStart(1,customPick);
-      }
+      }//end else if
+
+      //ask user if they would like to play again
       System.out.println("would you like to play again? (yes or no)");
       restart = ask.nextLine();
       restart = restart.toLowerCase();
 
 
 
-    }
-    while (!restart.equals("no"));//in progress
-  }
+    }//end loop
+    while (!restart.equals("no"));
+  }//end main
 
 
 
@@ -62,26 +65,27 @@ class numbergame {
 
       if (guess > number) {
         maxNum = guess - 1;
-        System.out.println("Wrong too high! Pick another number from " + minNum + "-" + maxNum);
-        guess = ask.nextInt();
+        System.out.println("Wrong too high! Pick another number from " + minNum + "-" + maxNum); //changes range based on the guess
+        guess = ask.nextInt(); //stores the users next guess
 
-      }
+      }//end if
       else if (guess < number) {
         minNum = guess + 1;
-        System.out.println("Wrong too low! Pick another number from " + minNum + "-" + maxNum);
-        guess = ask.nextInt();
+        System.out.println("Wrong too low! Pick another number from " + minNum + "-" + maxNum);//changes range based on the guess
+        guess = ask.nextInt();//stores the users next guess
 
-      }
-      numGuess++;
-    
-
-    }
-    while (guess != number);
-
-    System.out.println("Correct, it took " + numGuess + " tries");
+      }//end else if
+      numGuess++;//stores the number of guesses
 
 
-  }
+    }//end loop
+    while (guess != number); //loops until the user guesses right
+
+    System.out.println("Correct, it took " + numGuess + " tries");//winning print statement
 
 
-}
+
+  }//end gameStart function
+
+
+}//end class
