@@ -1,5 +1,7 @@
 # Random Number Game
 
-## What I learned:
+## What I learned/did:
 
-* Work with the substring
+* I learned about `.equals()` method which compares 2 strings
+
+* I practiced with scanner and learned how to set up a global scanner
