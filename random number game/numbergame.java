@@ -3,45 +3,43 @@ import java.util.Random;
 
 
 class numbergame {
-  //global scanner
-  static Scanner ask = new Scanner(System.in);
 
   public static void main(String[] args) {
     String restart = "";
-
+    Scanner ask = new Scanner(System.in);
     do{//restart loop
       //ask user for difficulty
       System.out.println("Hello, what difficulty would you like when playing this number guessing game? \neasy \nmedium \nhard \ncustom");
       String difficulty = ask.nextLine();
       difficulty = difficulty.toLowerCase(); //in case of capital letters
 
-
+      int max = 0;
     //print ending statement when user wins
       if (difficulty.equals("easy")) {
-        gameStart(1,10);
-      }//end if
+        max = 10;
+      }
       else if (difficulty.equals("medium")) {
-        gameStart(1,100);
-      }//end else if
+        max = 100;
+      }
       else if (difficulty.equals("hard")) {
-        gameStart(1,1000);
-      }//end else if
+        max = 1000;
+      }
       else if (difficulty.equals("custom")) {
         System.out.println("choose a number to be the maximum");
-        int customPick = ask.nextInt();
-        gameStart(1,customPick);
-      }//end else if
+        max = ask.nextInt();
+      }
 
-      //ask user if they would like to play again
+      gameStart(1, max);
+
       System.out.println("would you like to play again? (yes or no)");
-      restart = ask.nextLine();
+      ask.nextLine();
       restart = restart.toLowerCase();
 
 
 
-    }//end loop
-    while (!restart.equals("no"));
-  }//end main
+    }
+    while (!restart.equals("no"));//in progress
+  }
 
 
 
@@ -51,9 +49,11 @@ class numbergame {
     Random random = new Random();
     int number = random.nextInt(max) + 1;
 
+    Scanner numberGuess = new Scanner(System.in);
+
     //ask the user for their number guess thing
     System.out.println("Guess a number from 1-"+ max);
-    int guess = ask.nextInt();
+    int guess = numberGuess.nextInt();
 
 
     //setting up variables for while statement
@@ -65,27 +65,25 @@ class numbergame {
 
       if (guess > number) {
         maxNum = guess - 1;
-        System.out.println("Wrong too high! Pick another number from " + minNum + "-" + maxNum); //changes range based on the guess
-        guess = ask.nextInt(); //stores the users next guess
+        System.out.println("Wrong too high! Pick another number from " + minNum + "-" + maxNum);
+        guess = numberGuess.nextInt();
 
-      }//end if
+      }
       else if (guess < number) {
         minNum = guess + 1;
-        System.out.println("Wrong too low! Pick another number from " + minNum + "-" + maxNum);//changes range based on the guess
-        guess = ask.nextInt();//stores the users next guess
+        System.out.println("Wrong too low! Pick another number from " + minNum + "-" + maxNum);
+        guess = numberGuess.nextInt();
 
-      }//end else if
-      numGuess++;//stores the number of guesses
-
-
-    }//end loop
-    while (guess != number); //loops until the user guesses right
-
-    System.out.println("Correct, it took " + numGuess + " tries");//winning print statement
+      }
+      numGuess++;
 
 
+    }
+    while (guess != number);
 
-  }//end gameStart function
+    System.out.println("Correct, it took " + numGuess + " tries");
+
+  }
 
 
-}//end class
+}
