@@ -1,10 +1,10 @@
 void setup() {
-  size(680, 658);
-  background(255);
+  size(680, 658);//size of canvas
+  background(255);//background color 
 }
 void draw() {
   
-   if (mousePressed) {
+   if (mousePressed) { //when mouse pressed shows image
     background(29,28,26);
     fill(225);
     circle(340,329,400);
@@ -14,7 +14,7 @@ void draw() {
     circle(440,250,50);
   
    }
-   else {
+   else { //if not it shows a different image
     background(165, 237, 250);
     fill(253,253,150);
     circle(340,329,400);
