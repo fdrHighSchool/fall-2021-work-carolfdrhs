@@ -32,7 +32,7 @@ class numbergame {
       gameStart(1, max);
 
       System.out.println("would you like to play again? (yes or no)");
-      ask.nextLine();
+      restart = ask.nextLine();
       restart = restart.toLowerCase();
 
 
@@ -62,7 +62,7 @@ class numbergame {
     int minNum = min;
 
     do{
-
+      System.out.println(numGuess); //guess check
       if (guess > number) {
         maxNum = guess - 1;
         System.out.println("Wrong too high! Pick another number from " + minNum + "-" + maxNum);
