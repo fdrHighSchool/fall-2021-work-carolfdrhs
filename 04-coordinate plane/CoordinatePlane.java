@@ -18,25 +18,28 @@ public class CoordinatePlane {
     int x2 = findX(point2);
     int y2 = findY(point2);
 
+    cabDist(x1,y1,x2,y2);
+    crowDist(x1,y1,x2,y2);
 
 
   }//end main
   public static void cabDist(int x1, int y1, int x2, int y2){
-    
-
-
+    int cabDist = Math.abs(y2-y1) + Math.abs(x2-x1);
+    System.out.println("This is the cab distance: " + cabDist);
 
   }
-  //public static void crowDist(int x, int y, int x2, int y2)
+  public static void crowDist(int x1, int y1, int x2, int y2){
+    double crowDist = Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
+    System.out.println("This is the crow distance: " + crowDist);
+  }
 
 /*
-Name:
-Purpose:
-Input:
-Return:
-
-
+Name:findX
+Purpose:get the value of x from the string coordinate
+Input:the coordinate
+Return:x value
 */
+
   public static int findX(String point){
     //get the x and y values
     String x = point.substring(1,point.indexOf(","));
@@ -49,6 +52,12 @@ Return:
     //return x value
     return(x1);
 
+/*
+Name:findY
+Purpose:get the value of y from the string coordinate
+Input:the coordinate
+Return:y value
+*/
 
   }
   public static int findY(String point){
