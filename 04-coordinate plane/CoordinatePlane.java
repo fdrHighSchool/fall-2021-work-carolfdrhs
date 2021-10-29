@@ -46,11 +46,12 @@ Return:x value
     //System.out.println(x);
 
     //convert String to int  Integer.parseInt();
-    int x1 = Integer.parseInt(x);
+    int x1 = Integer.parseInt(x.trim());
     //System.out.println(x1);
 
     //return x value
     return(x1);
+  }//end findX
 
 /*
 Name:findY
@@ -59,21 +60,21 @@ Input:the coordinate
 Return:y value
 */
 
-  }
+
   public static int findY(String point){
     //get the x and y values
     String y = point.substring(point.lastIndexOf(",")+1,point.length()-1);
     //System.out.println(y);
 
     //convert String to int  Integer.parseInt();
-    int y1 = Integer.parseInt(y);
+    int y1 = Integer.parseInt(y.trim());
     //System.out.println(y1);
 
     //return y value
     return(y1);
 
 
-  }
+  }//end findY
 
 
 
