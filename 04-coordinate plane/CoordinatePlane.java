@@ -63,7 +63,7 @@ Return:y value
 
   public static int findY(String point){
     //get the x and y values
-    String y = point.substring(point.lastIndexOf(",")+1,point.length()-1);
+    String y = point.substring(point.indexOf(",")+1,point.length()-1);
     //System.out.println(y);
 
     //convert String to int  Integer.parseInt();
