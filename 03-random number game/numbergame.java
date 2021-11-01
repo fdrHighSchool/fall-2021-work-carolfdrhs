@@ -27,7 +27,7 @@ class numbergame {
       }//end else if
       else if (difficulty.equals("custom")) {
         System.out.println("choose a number to be the maximum");
-        customPick = ask.nextInt();
+        int customPick = ask.nextInt();
         gameStart(1, customPick);
       }//end else if
 
