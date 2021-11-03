@@ -6,6 +6,48 @@ public class CoordinatePlane {
 
   public static void main(String[] args){
     Scanner ask = new Scanner(System.in);
+    System.out.println("Which of the following do you want?");
+    System.out.print("1.Distance \n2.Area calculator");
+
+    int choice = ask.nextInt();
+    if (choice == 1){
+      distance();
+    }
+    else{
+      area();
+    }
+
+
+  }//end main
+  public static void area(){
+    Scanner ask = new Scanner(System.in);
+    System.out.println("What shape do you want to know the area of?");
+    System.out.print("1.Square\n");
+    int choice = ask.nextInt();
+    if (choice == 1){
+      square();
+    }
+  }//end area method
+  public static void square(){
+    Scanner ask = new Scanner(System.in);
+    for(i = 1; i<5, i++){
+      
+    }
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+  public static void distance(){
+    Scanner ask = new Scanner(System.in);
     //ask for the coordinate
     System.out.println("first point?");
     String point1 = ask.nextLine();
@@ -20,9 +62,8 @@ public class CoordinatePlane {
 
     cabDist(x1,y1,x2,y2);
     crowDist(x1,y1,x2,y2);
+  }
 
-
-  }//end main
   public static void cabDist(int x1, int y1, int x2, int y2){
     int cabDist = Math.abs(y2-y1) + Math.abs(x2-x1);
     System.out.println("This is the cab distance: " + cabDist);
