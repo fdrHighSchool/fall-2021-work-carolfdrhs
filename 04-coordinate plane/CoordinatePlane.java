@@ -27,18 +27,44 @@ public class CoordinatePlane {
     if (choice == 1){
       square();
     }
+
+
   }//end area method
+
+
+  /*
+  -check that all sides are equal
+    distance()
+  -check for right angles
+    slope()
+  */
   public static void square(){
     Scanner ask = new Scanner(System.in);
-    for(i = 1; i<5, i++){
-      
-    }
+    //for(i = 1; i<5; i++){
+
+    //}
 
 
 
   }
 
+/*
+Name: Slope
+Purpose:find the slope between 2 points
+Input: 2 points
+Return: double
 
+*/
+
+public static double slope(int x1, int y1, int x2, int y2){
+  if(x1 != x2){
+    return (y2-y1)/(x2-x1);
+  }
+    return 0.0;
+  }
+
+
+}//end slope
 
 
 
@@ -54,65 +80,59 @@ public class CoordinatePlane {
     int x1 =findX(point1);
     int y1 =findY(point1);
 
-
     System.out.println("second point?");
     String point2 = ask.nextLine();
     int x2 = findX(point2);
     int y2 = findY(point2);
 
-    cabDist(x1,y1,x2,y2);
-    crowDist(x1,y1,x2,y2);
-  }
+    System.out.println("the crow distance is: " + crowDist(x1,y1,x2,y2));
+    System.out.println("the cab distance is: " + cabDist(x1,y1,x2,y2));
 
-  public static void cabDist(int x1, int y1, int x2, int y2){
+    System.out.println(slope(x1,y1,x2,y2));
+  }//end distance
+
+
+  public static int cabDist(int x1, int y1, int x2, int y2){
     int cabDist = Math.abs(y2-y1) + Math.abs(x2-x1);
-    System.out.println("This is the cab distance: " + cabDist);
+    return cabDist;
 
-  }
-  public static void crowDist(int x1, int y1, int x2, int y2){
+  }//end cabDist
+
+
+  public static double crowDist(int x1, int y1, int x2, int y2){
     double crowDist = Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
-    System.out.println("This is the crow distance: " + crowDist);
-  }
+    return crowDist;
+  }//end crowDist
 
 /*
 Name:findX
 Purpose:get the value of x from the string coordinate
 Input:the coordinate
-Return:x value
+Return:x value as an int
 */
 
   public static int findX(String point){
     //get the x and y values
     String x = point.substring(1,point.indexOf(","));
-    //System.out.println(x);
 
     //convert String to int  Integer.parseInt();
     int x1 = Integer.parseInt(x.trim());
-    //System.out.println(x1);
 
     //return x value
-    return(x1);
+    return x1;
   }//end findX
 
-/*
-Name:findY
-Purpose:get the value of y from the string coordinate
-Input:the coordinate
-Return:y value
-*/
 
 
   public static int findY(String point){
     //get the x and y values
     String y = point.substring(point.indexOf(",")+1,point.length()-1);
-    //System.out.println(y);
 
     //convert String to int  Integer.parseInt();
     int y1 = Integer.parseInt(y.trim());
-    //System.out.println(y1);
 
     //return y value
-    return(y1);
+    return y1;
 
 
   }//end findY
