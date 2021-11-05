@@ -7,7 +7,7 @@ public class CoordinatePlane {
   public static void main(String[] args){
     Scanner ask = new Scanner(System.in);
     System.out.println("Which of the following do you want?");
-    System.out.print("1.Distance \n2.Area calculator");
+    System.out.print("1.Distance \n2.Area calculator\n");
 
     int choice = ask.nextInt();
     if (choice == 1){
@@ -26,10 +26,19 @@ public class CoordinatePlane {
     int choice = ask.nextInt();
     if (choice == 1){
       square();
+
     }
 
 
   }//end area method
+  public static void drawSquare(int d){
+    for (int row = 0; row < d; row++){
+      for(int col = 0; col <d; col++){
+        System.out.println("*  ");
+      }//end of row
+      System.out.println();
+    }//end of square
+  }
 
 
   /*
@@ -40,9 +49,54 @@ public class CoordinatePlane {
   */
   public static void square(){
     Scanner ask = new Scanner(System.in);
-    //for(i = 1; i<5; i++){
 
-    //}
+        System.out.println("Please go in clockwise order");
+        System.out.print("Enter the first point: ");
+
+        // get points and parse out x and y
+        // point 1
+        String point1 = ask.nextLine();
+        int x1 = findX(point1);
+        int y1 = findY(point1);
+
+        // point 2
+        System.out.print("Enter the second point: ");
+        String point2 = ask.nextLine();
+        int x2 = findX(point2);
+        int y2 = findY(point2);
+
+        // point 3
+        System.out.print("Enter the third point: ");
+        String point3 = ask.nextLine();
+        int x3 = findX(point3);
+        int y3 = findY(point3);
+
+        // point 4
+        System.out.print("Enter the fourth point: ");
+        String point4 = ask.nextLine();
+        int x4 = findX(point4);
+        int y4 = findY(point4);
+
+        // calculate 4 distances
+        double distance1 = crowDist(x1, y1, x2, y2);
+        double distance2 = crowDist(x2, y2, x3, y3);
+        double distance3 = crowDist(x3, y3, x4, y4);
+        double distance4 = crowDist(x4, y4, x1, y1);
+
+        // test if all sides are congruent
+        if (distance1 == distance2 && distance2 == distance3 && distance3 == distance4) {
+          System.out.println("Passes distance test");
+          double slope1 = slope(x1,y1,x2,y2);
+          double slope2 = slope(x2,y2,x3,y3);
+          if ((slope1 * slope2 == -1) || (slope1 == Integer.MAX_VALUE && slope2 == 0) || (slope1 == 0 && slope2 == Integer.MAX_VALUE)){
+            System.out.println("is a square");
+            //drawSquare((int)distance1);
+          }
+        } // end if statement
+        else {
+          System.out.println("Fails distance test");
+        }
+
 
 
 
@@ -56,15 +110,12 @@ Return: double
 
 */
 
-public static double slope(int x1, int y1, int x2, int y2){
+public static double slope(double x1, double y1, double x2, double y2){
   if(x1 != x2){
     return (y2-y1)/(x2-x1);
   }
-    return 0.0;
-  }
-
-
-}//end slope
+    return Integer.MAX_VALUE;
+  }//end slope
 
 
 
