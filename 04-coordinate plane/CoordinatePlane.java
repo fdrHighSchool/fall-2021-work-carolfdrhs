@@ -32,12 +32,12 @@ public class CoordinatePlane {
 
   }//end area method
   public static void drawSquare(int d){
-    for (int row = 0; row < d; row++){
-      for(int col = 0; col <d; col++){
-        System.out.println("*  ");
-      }//end of row
+    for (int row = 0; row < d; row++) {
+      for(int col = 0; col < d; col++) {
+        System.out.print("*  ");
+      } // end of row
       System.out.println();
-    }//end of square
+    } // end of square
   }
 
 
@@ -90,7 +90,7 @@ public class CoordinatePlane {
           double slope2 = slope(x2,y2,x3,y3);
           if ((slope1 * slope2 == -1) || (slope1 == Integer.MAX_VALUE && slope2 == 0) || (slope1 == 0 && slope2 == Integer.MAX_VALUE)){
             System.out.println("is a square");
-            //drawSquare((int)distance1);
+            drawSquare((int)distance1);
           }
         } // end if statement
         else {
