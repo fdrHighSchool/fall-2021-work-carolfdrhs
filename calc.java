@@ -8,21 +8,8 @@ public class calc{
 
     String operand1 = equation.substring(0,equation.indexOf(" "));
     String operand2 = equation.substring(equation.lastIndexOf(" ")+1);
-
-    System.out.println(operand1);
-    System.out.println(operand2);
-    System.out.println();
-
-    System.out.println(findNum(operand1));
-    System.out.println(findNum(operand2));
-    System.out.println();
-
-    System.out.println(findDen(operand1));
-    System.out.println(findDen(operand2));
-    System.out.println();
-
-    System.out.println(findWhole(operand1));
-    System.out.println(findWhole(operand2));
+    String operator = equation.substring(equation.indexOf(" ")+1, equation.lastIndexOf(" "));
+    produceAnswer(operand1,operand2,operator);
 
   }
   public static int findNum(String operand){
@@ -44,14 +31,58 @@ public class calc{
 
     }
     else{//if theres a slash
-      return Integer.parseInt(operand.substring("/")+1); //take denominator
+      return Integer.parseInt(operand.substring(operand.indexOf("/")+1)); //take denominator
     }
 
     }
 
 
     public static int findWhole(String operand){
-      return Integer.parseInt(operand.substring(0, operand.indexOf("_")));
+      if (operand.indexOf("_")!= -1){//if there is a _
+        return Integer.parseInt(operand.substring(0, operand.indexOf("_")));
+    }
+      else{
+        return 0;
+      }
+    }
+    public static int improperNum(int whole, int num, int den){
+       return whole * den + num;//returns numerator of the improper fraction
+
+    }
+
+    public static int add(int num1, int num2){
+      return num1 + num2;
+    }
+    public static int commonDen(int num1, int den1, int num2, int den2){
+      int deno1= den1 * den2;
+      int nume1 = num1 * den2;
+      int nume2 = num2 * den1;
+      int deno2 = den2 * den1;
+
+
+    }
+
+    public static void produceAnswer(String operand1, String operand2, String operator){
+      int whole1 = findWhole(operand1);
+      int num1 = findNum(operand1);
+      int den1 = findDen(operand1);
+
+      int whole2 = findWhole(operand2);
+      int num2 = findNum(operand2);
+      int den2 = findDen(operand2);
+
+      if (operator.equals("+")){
+        int addWhole = add(whole1,whole2);
+
+      }
+      if (operator.equals("*")){
+        improperNum(whole1, num1, den1);
+      }
+
+
+
+
+
 
     }
 
