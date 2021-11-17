@@ -11,7 +11,10 @@ public class calc{
     String operator = equation.substring(equation.indexOf(" ")+1, equation.lastIndexOf(" "));
     produceAnswer(operand1,operand2,operator);
 
+
   }
+
+
   public static int findNum(String operand){
     if (operand.indexOf("_")!= -1){
       return Integer.parseInt(operand.substring(operand.indexOf("_")+1,operand.indexOf("/")));
@@ -27,7 +30,7 @@ public class calc{
 
   public static int findDen(String operand){
     if (operand.indexOf("/") == -1){//if there isnt a slash
-      return Integer.parseInt(operand);//take whole number
+      return 1;//take whole number
 
     }
     else{//if theres a slash
@@ -50,19 +53,41 @@ public class calc{
 
     }
 
-    public static int add(int num1, int num2){
-      return num1 + num2;
+    public static int simplify(int num, int den, int which){
+      for (int i = 1; i<num || i<den; i++){
+        if (num%i == 0 && den%i == 0){
+          num = num/i;
+          den = den/i;
+        }
+      }
+      if (which == 1){
+        return num;
+      }
+      else{
+        return den;
+      }
     }
-    public static int commonDen(int num1, int den1, int num2, int den2){
-      int deno1= den1 * den2;
-      int nume1 = num1 * den2;
-      int nume2 = num2 * den1;
-      int deno2 = den2 * den1;
+    public static int add(int whole1, int whole2, int num1, int den1, int num2, int den2, int which){
+      int addWhole = whole1 + whole2;
+      int commonDen = den1 * den2;
+      int addNum = (num1*den2) + (num2*den1);
+      if (which == 1){
+        return addNum;
+      }
+      else if (which == 2){
+        return commonDen;
+      }
+      else{
+        return addWhole;
+      }
+
 
 
     }
 
-    public static void produceAnswer(String operand1, String operand2, String operator){
+
+
+    public static int produceAnswer(String operand1, String operand2, String operator){
       int whole1 = findWhole(operand1);
       int num1 = findNum(operand1);
       int den1 = findDen(operand1);
@@ -72,12 +97,21 @@ public class calc{
       int den2 = findDen(operand2);
 
       if (operator.equals("+")){
-        int addWhole = add(whole1,whole2);
+        int addNum =
+        System.out.println(add(whole1,whole2,num1,den1,num2,den2,1));
+        System.out.println(add(whole1,whole2,num1,den1,num2,den2,2));
+
+        simplify
+        return add(whole1,whole2,num1,den1,num2,den2,1);
+
 
       }
       if (operator.equals("*")){
         improperNum(whole1, num1, den1);
+        return 0;
       }
+      return 0;
+    }
 
 
 
@@ -85,5 +119,3 @@ public class calc{
 
 
     }
-
-}
