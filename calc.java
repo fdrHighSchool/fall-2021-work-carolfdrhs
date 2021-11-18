@@ -9,7 +9,7 @@ public class calc{
     String operand1 = equation.substring(0,equation.indexOf(" "));
     String operand2 = equation.substring(equation.lastIndexOf(" ")+1);
     String operator = equation.substring(equation.indexOf(" ")+1, equation.lastIndexOf(" "));
-    produceAnswer(operand1,operand2,operator);
+    System.out.println(produceAnswer(operand1,operand2,operator));
 
 
   }
@@ -97,21 +97,29 @@ public class calc{
       int den2 = findDen(operand2);
 
       if (operator.equals("+")){
-        int addNum =
-        System.out.println(add(whole1,whole2,num1,den1,num2,den2,1));
-        System.out.println(add(whole1,whole2,num1,den1,num2,den2,2));
 
-        simplify
-        return add(whole1,whole2,num1,den1,num2,den2,1);
+        int addNum = add(whole1,whole2,num1,den1,num2,den2,1);
+        int addDen = add(whole1,whole2,num1,den1,num2,den2,2);
+        int addWhole = add(whole1,whole2,num1,den1,num2,den2,3);
+        if (addWhole  == 0){
+          
+
+
+        }
+
+
+
+        return simplify(addNum,addDen,1);
 
 
       }
       if (operator.equals("*")){
-        improperNum(whole1, num1, den1);
+        improperNum(whole1, num1, den1); //numerator of the improper fraction
         return 0;
       }
       return 0;
     }
+
 
 
 
