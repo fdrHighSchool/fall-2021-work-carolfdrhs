@@ -54,7 +54,7 @@ public class calc{
     }
 
     public static int simplify(int num, int den, int which){
-      for (int i = 1; i<num || i<den; i++){
+      for (int i = 1; i<num && i<den; i++){
         if (num%i == 0 && den%i == 0){
           num = num/i;
           den = den/i;
@@ -67,18 +67,14 @@ public class calc{
         return den;
       }
     }
-    public static int add(int whole1, int whole2, int num1, int den1, int num2, int den2, int which){
-      int addWhole = whole1 + whole2;
+    public static int add(int num1, int den1, int num2, int den2, int which){
       int commonDen = den1 * den2;
       int addNum = (num1*den2) + (num2*den1);
       if (which == 1){
         return addNum;
       }
-      else if (which == 2){
+      else {
         return commonDen;
-      }
-      else{
-        return addWhole;
       }
 
 
@@ -88,6 +84,7 @@ public class calc{
 
 
     public static int produceAnswer(String operand1, String operand2, String operator){
+      //list the values of each operand
       int whole1 = findWhole(operand1);
       int num1 = findNum(operand1);
       int den1 = findDen(operand1);
@@ -96,23 +93,27 @@ public class calc{
       int num2 = findNum(operand2);
       int den2 = findDen(operand2);
 
+      //convert to improper
+      if (whole1 != 0){
+        num1 = improperNum(whole1,num1,den1);
+      }
+      if (whole2 != 0){
+        num2 = improperNum(whole2,num2,num2);
+      }
+
+      //for addition
       if (operator.equals("+")){
-
-        int addNum = add(whole1,whole2,num1,den1,num2,den2,1);
-        int addDen = add(whole1,whole2,num1,den1,num2,den2,2);
-        int addWhole = add(whole1,whole2,num1,den1,num2,den2,3);
-        if (addWhole  == 0){
-          
-
-
-        }
-
-
-
-        return simplify(addNum,addDen,1);
-
+        int addNum = add(num1,den1,num2,den2,1);
+        int addDen = add(num1,den1,num2,den2,2);
+        int newNum = simplify(addNum,addDen,1);
+        int newDen = simplify(addNum,addDen,2);
+        System.out.println("The answer is: " + newNum + "/" + newDen);
+        return 0;
 
       }
+
+
+
       if (operator.equals("*")){
         improperNum(whole1, num1, den1); //numerator of the improper fraction
         return 0;
