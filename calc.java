@@ -107,7 +107,7 @@ public class calc{
         int addDen = add(num1,den1,num2,den2,2);
         int newNum = simplify(addNum,addDen,1);
         int newDen = simplify(addNum,addDen,2);
-        System.out.println("The answer is: " + newNum + "/" + newDen);
+        System.out.println("The answer is: " + newNum + "/" + newDen); //test for simplifying improper fractions to mixed numbers
         return 0;
 
       }
