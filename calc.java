@@ -9,7 +9,7 @@ public class calc{
     String operand1 = equation.substring(0,equation.indexOf(" "));
     String operand2 = equation.substring(equation.lastIndexOf(" ")+1);
     String operator = equation.substring(equation.indexOf(" ")+1, equation.lastIndexOf(" "));
-    System.out.println(produceAnswer(operand1,operand2,operator));
+    produceAnswer(operand1,operand2,operator);
 
 
   }
@@ -67,23 +67,13 @@ public class calc{
         return den;
       }
     }
-    public static int add(int num1, int den1, int num2, int den2, int which){
-      int commonDen = den1 * den2;
-      int addNum = (num1*den2) + (num2*den1);
-      if (which == 1){
-        return addNum;
-      }
-      else {
-        return commonDen;
-      }
 
 
 
-    }
 
 
 
-    public static int produceAnswer(String operand1, String operand2, String operator){
+    public static void produceAnswer(String operand1, String operand2, String operator){
       //list the values of each operand
       int whole1 = findWhole(operand1);
       int num1 = findNum(operand1);
@@ -92,23 +82,40 @@ public class calc{
       int whole2 = findWhole(operand2);
       int num2 = findNum(operand2);
       int den2 = findDen(operand2);
+      int commonDen = (den1*den2);
 
       //convert to improper
-      if (whole1 != 0){
-        num1 = improperNum(whole1,num1,den1);
+      if (whole1 != 0){//if operand1 is a mixed number
+        num1 = improperNum(whole1,num1,den1);//convert to improper number
       }
-      if (whole2 != 0){
-        num2 = improperNum(whole2,num2,num2);
+      if (whole2 != 0){//if operand2 is a mixed number
+        num2 = improperNum(whole2,num2,den2);
       }
 
       //for addition
       if (operator.equals("+")){
-        int addNum = add(num1,den1,num2,den2,1);
-        int addDen = add(num1,den1,num2,den2,2);
-        int newNum = simplify(addNum,addDen,1);
-        int newDen = simplify(addNum,addDen,2);
-        System.out.println("The answer is: " + newNum + "/" + newDen); //test for simplifying improper fractions to mixed numbers
-        return 0;
+        int addNum = (num1*den2)+(num2*den1);
+
+
+        int newNum = simplify(addNum,commonDen,1);
+        int newDen = simplify(addNum,commonDen,2);
+        if (newNum>newDen){//if the numerator > denominator convert to mixed or whole number
+          if (newNum % newDen == 0){//if there is no remainder
+            System.out.println(newNum/newDen);//convert to whole number
+          }
+          else{//if there is a remainder
+            //convert to mixed number
+            int newWhole = (int)newNum/newDen;//the whole
+            System.out.println("The answer is: "+newWhole+"_"+newNum%newDen+"/"+newDen);
+
+
+          }
+        }
+
+      }
+      if (operator.equals("-")){
+        int subNum = (num1*den2)+(num2*den1);
+
 
       }
 
