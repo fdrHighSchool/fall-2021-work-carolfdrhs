@@ -67,7 +67,13 @@ public class calc{
         return den;
       }
     }
+    public static int addSub(int num1,int num2,int den1,int den2,String operator){
+      int addNum = (num1*den2)+(num2*den1);
 
+
+      int newNum = simplify(addNum,commonDen,1);
+      int newDen = simplify(addNum,commonDen,2);
+    }
 
 
 
@@ -95,7 +101,7 @@ public class calc{
       //for addition
       if (operator.equals("+")){
         int addNum = (num1*den2)+(num2*den1);
-
+        //MAKE THIS INTO A METHOD
 
         int newNum = simplify(addNum,commonDen,1);
         int newDen = simplify(addNum,commonDen,2);
