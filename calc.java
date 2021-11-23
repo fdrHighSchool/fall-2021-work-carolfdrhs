@@ -101,7 +101,7 @@ public class calc{
         if (newNum % newDen != 0){//tests to see if is a remainder(not a factor)
           int newWhole = (int)newNum/newDen;//divides but converts the double to an int so it isnt a decimal
           System.out.println("The answer is: "+newWhole+"_"+newNum%newDen+"/"+newDen);//prints mixed number
-          // BUG: doesnt simplify cases that arent simplified after conversion
+          
         }
         else{//if it can simplified to a whole number
           System.out.println(newNum/newDen);
