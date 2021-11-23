@@ -85,20 +85,24 @@ public class calc{
         Num = (num1*den2)-(num2*den1);
       }
 
-
+      //simplifies the fraction
       int newNum = simplify(Num,commonDen,1);
       int newDen = simplify(Num,commonDen,2);
+      // System.out.println(newNum);
+      // System.out.println(newDen);
 
-      if (newNum>newDen){//if the numerator > denominator convert to mixed or whole number
-        if (newNum % newDen == 0){//if there is no remainder
-          System.out.println(newNum/newDen);//convert to whole number
+      if (newNum>newDen){//if it is an improper fraction then converts to mixed number
+        if (newNum % newDen != 0){//tests to see if is a remainder
+          int newWhole = (int)newNum/newDen;//divides but converts the double to an int so it isnt a decimal
+          System.out.println("The answer is: "+newWhole+"_"+newNum%newDen+"/"+newDen);//prints mixed number
         }
-        else{//if there is a remainder
-          //convert to mixed number
-          int newWhole = (int)newNum/newDen;//the whole
-          System.out.println("The answer is: "+newWhole+"_"+newNum%newDen+"/"+newDen);
-        }
-    }
+      }
+      else if (newNum == newDen||newNum % newDen == 0){//BUG WITH CASES LIKE 8/4 WHERE THE NUM AND DEN ARE NOT EQUAL BUT NEEDED TO BE CONVERTED TO A WHOLE NUMBER
+         System.out.println(newNum/newDen);//convert to whole number
+      }
+      else{
+        System.out.println("The answer is: " + newNum + "/" + newDen);
+      }
 }//end addSub
 
 
@@ -132,11 +136,13 @@ public class calc{
 
       }
 
+      //CONVERT IMPROPER FRACTIONS TO MIXED NUMBERS example test case: 1_3/4 * 5 = 35/4
+
       if (operator.equals("*")){
         int multiplyNum = simplify(num1 * num2,den1 * den2,1);
         int multiplyDen = simplify(num1 * num2,den1 * den2,2);
-        System.out.println(multiplyNum);
-        System.out.println(multiplyDen);
+        // System.out.println(multiplyNum);
+        // System.out.println(multiplyDen);
 
         System.out.println(multiplyNum + "/" + multiplyDen);
 
