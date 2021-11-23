@@ -17,6 +17,7 @@ public class calc{
     produceAnswer(operand1,operand2,operator);
 
 
+
   }//end main method
 
 
@@ -60,13 +61,17 @@ public class calc{
     }//end improperNum
 
     public static int simplify(int num, int den, int which){
-      for (int i = 1; i<num && i<den; i++){//divides by a factor until the fraction is simplified completely
+      int gcf = 1;
+      for (int i = 2; i<=num && i<=den; i++){//divides by a factor until the fraction is simplified completely
         if (num%i == 0 && den%i == 0){ //checks for factors
-          num = num/i;
-          den = den/i;
+          gcf = i;
           //i = 1;
         }
       }
+
+      num = num/gcf;
+      den = den/gcf;
+
       //to return which value
       if (which == 1){
         return num;
@@ -88,22 +93,25 @@ public class calc{
       //simplifies the fraction
       int newNum = simplify(Num,commonDen,1);
       int newDen = simplify(Num,commonDen,2);
-      // System.out.println(newNum);
-      // System.out.println(newDen);
+      mixedNum(newNum,newDen);
 
+}//end addSub
+    public static void mixedNum(int newNum, int newDen){
       if (newNum>newDen){//if it is an improper fraction then converts to mixed number
-        if (newNum % newDen != 0){//tests to see if is a remainder
+        if (newNum % newDen != 0){//tests to see if is a remainder(not a factor)
           int newWhole = (int)newNum/newDen;//divides but converts the double to an int so it isnt a decimal
           System.out.println("The answer is: "+newWhole+"_"+newNum%newDen+"/"+newDen);//prints mixed number
+          // BUG: doesnt simplify cases that arent simplified after conversion
         }
-      }
-      else if (newNum == newDen||newNum % newDen == 0){//BUG WITH CASES LIKE 8/4 WHERE THE NUM AND DEN ARE NOT EQUAL BUT NEEDED TO BE CONVERTED TO A WHOLE NUMBER
-         System.out.println(newNum/newDen);//convert to whole number
+        else{//if it can simplified to a whole number
+          System.out.println(newNum/newDen);
+
+        }
       }
       else{
         System.out.println("The answer is: " + newNum + "/" + newDen);
       }
-}//end addSub
+    }//end mixedNum
 
 
 
@@ -136,15 +144,13 @@ public class calc{
 
       }
 
-      //CONVERT IMPROPER FRACTIONS TO MIXED NUMBERS example test case: 1_3/4 * 5 = 35/4
+
 
       if (operator.equals("*")){
         int multiplyNum = simplify(num1 * num2,den1 * den2,1);
         int multiplyDen = simplify(num1 * num2,den1 * den2,2);
-        // System.out.println(multiplyNum);
-        // System.out.println(multiplyDen);
 
-        System.out.println(multiplyNum + "/" + multiplyDen);
+        mixedNum(multiplyNum,multiplyDen);
 
 
 
@@ -152,17 +158,12 @@ public class calc{
       if (operator.equals("/")){
         int divideNum = simplify(num1 * den2,den1*num2,1);
         int divideDen = simplify(num1 * den2,den1*num2,2);
-        // System.out.println(divideNum);
-        // System.out.println(divideDen);
 
-        System.out.println(divideNum + "/" + divideDen);
-
-
-
+        mixedNum(divideNum,divideDen);
 
 
       }
 
-    }
+    }//end produceAnswer
 
 }//end class
