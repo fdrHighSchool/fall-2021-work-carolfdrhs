@@ -7,16 +7,19 @@ public class calc{
     System.out.println("input your equation:");
     String equation = ask.nextLine();
 
+    while(equation.toLowerCase().equals("quit") == false){
+      //split the different operands and operator
+      String operand1 = equation.substring(0,equation.indexOf(" "));
+      String operand2 = equation.substring(equation.lastIndexOf(" ")+1);
+      String operator = equation.substring(equation.indexOf(" ")+1, equation.lastIndexOf(" "));
 
-    //split the different operands and operator
-    String operand1 = equation.substring(0,equation.indexOf(" "));
-    String operand2 = equation.substring(equation.lastIndexOf(" ")+1);
-    String operator = equation.substring(equation.indexOf(" ")+1, equation.lastIndexOf(" "));
+      //call method that evaluates answer
+      produceAnswer(operand1,operand2,operator);
 
-    //call method that evaluates answer
-    produceAnswer(operand1,operand2,operator);
+      System.out.println("input your equation:");
+      equation = ask.nextLine();
 
-
+    }
 
   }//end main method
 
@@ -96,15 +99,17 @@ public class calc{
       mixedNum(newNum,newDen);
 
 }//end addSub
+
+//Mixed number conversion does not work with negatives.
     public static void mixedNum(int newNum, int newDen){
       if (newNum>newDen){//if it is an improper fraction then converts to mixed number
         if (newNum % newDen != 0){//tests to see if is a remainder(not a factor)
           int newWhole = (int)newNum/newDen;//divides but converts the double to an int so it isnt a decimal
           System.out.println("The answer is: "+newWhole+"_"+newNum%newDen+"/"+newDen);//prints mixed number
-          
+
         }
         else{//if it can simplified to a whole number
-          System.out.println(newNum/newDen);
+          System.out.println("The answer is: " + newNum/newDen);
 
         }
       }
@@ -112,6 +117,7 @@ public class calc{
         System.out.println("The answer is: " + newNum + "/" + newDen);
       }
     }//end mixedNum
+
 
 
 
@@ -125,44 +131,43 @@ public class calc{
       int whole2 = findWhole(operand2);
       int num2 = findNum(operand2);
       int den2 = findDen(operand2);
-
-
-      //convert to improper
-      if (whole1 != 0){//if operand1 is a mixed number
-        num1 = improperNum(whole1,num1,den1);//convert to improper number
-      }
-      if (whole2 != 0){//if operand2 is a mixed number
-        num2 = improperNum(whole2,num2,den2);
-      }
-
-      if (operator.equals("+")){
-        addSub(num1,num2,den1,den2,"+");
+      if (den1 == 0 || den2 == 0){
+        System.out.println("ERROR");
 
       }
-      if (operator.equals("-")){
-        addSub(num1,num2,den1,den2,"-");
+      else{
+        //convert to improper
+        if (whole1 != 0){//if operand1 is a mixed number
+          num1 = improperNum(whole1,num1,den1);//convert to improper number
+        }
+        else if (whole2 != 0){//if operand2 is a mixed number
+          num2 = improperNum(whole2,num2,den2);
+        }
 
-      }
+        if (operator.equals("+")){
+          addSub(num1,num2,den1,den2,"+");
+
+        }
+        else if (operator.equals("-")){
+          addSub(num1,num2,den1,den2,"-");
+
+        }
+
+        else if (operator.equals("*")){
+          int multiplyNum = simplify(num1 * num2,den1 * den2,1);
+          int multiplyDen = simplify(num1 * num2,den1 * den2,2);
+
+          mixedNum(multiplyNum,multiplyDen);
+        }
+        else if (operator.equals("/")){
+          int divideNum = simplify(num1 * den2,den1*num2,1);
+          int divideDen = simplify(num1 * den2,den1*num2,2);
+
+          mixedNum(divideNum,divideDen);
 
 
-
-      if (operator.equals("*")){
-        int multiplyNum = simplify(num1 * num2,den1 * den2,1);
-        int multiplyDen = simplify(num1 * num2,den1 * den2,2);
-
-        mixedNum(multiplyNum,multiplyDen);
-
-
-
-      }
-      if (operator.equals("/")){
-        int divideNum = simplify(num1 * den2,den1*num2,1);
-        int divideDen = simplify(num1 * den2,den1*num2,2);
-
-        mixedNum(divideNum,divideDen);
-
-
-      }
+        }
+    }
 
     }//end produceAnswer
 
