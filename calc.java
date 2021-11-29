@@ -141,10 +141,10 @@ public class calc{
       else{
         //convert to improper
         if (whole1 != 0){//if operand1 is a mixed number
-          num1 = improperNum(whole1,num1,den1);//convert to improper number
+          num1 += whole1 * den1;//convert to improper number
         }
         else if (whole2 != 0){//if operand2 is a mixed number
-          num2 = improperNum(whole2,num2,den2);
+          num2 = whole2 * den2;
         }
 
         if (operator.equals("+")){
