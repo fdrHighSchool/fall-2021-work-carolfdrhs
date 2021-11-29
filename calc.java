@@ -7,7 +7,7 @@ public class calc{
     System.out.println("input your equation:");
     String equation = ask.nextLine();
 
-    while(equation.toLowerCase().equals("quit") == false){
+    while(!equation.toLowerCase().equals("quit")){
       //split the different operands and operator
       String operand1 = equation.substring(0,equation.indexOf(" "));
       String operand2 = equation.substring(equation.lastIndexOf(" ")+1);
@@ -112,6 +112,9 @@ public class calc{
           System.out.println("The answer is: " + newNum/newDen);
 
         }
+      }
+      else if(newNum == newDen){
+        System.out.println("The answer is: " + newNum);
       }
       else{
         System.out.println("The answer is: " + newNum + "/" + newDen);
