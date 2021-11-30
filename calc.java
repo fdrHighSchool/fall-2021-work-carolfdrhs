@@ -58,10 +58,6 @@ public class calc{
       }
     }//end findWhole
 
-    public static int improperNum(int whole, int num, int den){
-       return whole * den + num;//returns numerator of the improper fraction
-
-    }//end improperNum
 
     public static int simplify(int num, int den, int which){
       int gcf = 1;
@@ -103,20 +99,22 @@ public class calc{
 //Mixed number conversion does not work with negatives.
     public static void mixedNum(int newNum, int newDen){
       if (newNum>newDen){//if it is an improper fraction then converts to mixed number
-        if (newNum % newDen != 0){//tests to see if is a remainder(not a factor)
+        if(newDen == 1){
+          System.out.println("The answer is " + newNum);
+        }
+         else if (newNum % newDen != 0){//tests to see if is a remainder(not a factor)
           int newWhole = (int)newNum/newDen;//divides but converts the double to an int so it isnt a decimal
           System.out.println("The answer is: "+newWhole+"_"+newNum%newDen+"/"+newDen);//prints mixed number
 
+
         }
-        else{//if it can simplified to a whole number
+        else if (newNum == newDen){//if it can simplified to a whole number
           System.out.println("The answer is: " + newNum/newDen);
 
         }
       }
-      else if(newNum == newDen){
-        System.out.println("The answer is: " + newNum);
-      }
       else{
+        System.out.println(newNum/newDen);
         System.out.println("The answer is: " + newNum + "/" + newDen);
       }
     }//end mixedNum
@@ -142,9 +140,11 @@ public class calc{
         //convert to improper
         if (whole1 != 0){//if operand1 is a mixed number
           num1 += whole1 * den1;//convert to improper number
+          
         }
-        else if (whole2 != 0){//if operand2 is a mixed number
-          num2 = whole2 * den2;
+        if (whole2 != 0){//if operand2 is a mixed number
+          num2 += whole2 * den2;
+
         }
 
         if (operator.equals("+")){
