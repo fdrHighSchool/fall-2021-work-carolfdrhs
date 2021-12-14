@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class mode{
+public class CentralMeasure{
   public static void main(String[] args){
     //make list of random values
     int[] randomArray = new int[10];
