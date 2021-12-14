@@ -113,6 +113,7 @@ public class calc{
 
         }
       }
+
       else{
         System.out.println(newNum/newDen);
         System.out.println("The answer is: " + newNum + "/" + newDen);
@@ -140,7 +141,7 @@ public class calc{
         //convert to improper
         if (whole1 != 0){//if operand1 is a mixed number
           num1 += whole1 * den1;//convert to improper number
-          
+
         }
         if (whole2 != 0){//if operand2 is a mixed number
           num2 += whole2 * den2;
