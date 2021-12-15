@@ -77,24 +77,28 @@ public class CentralMeasure{
 }//end findMax
 
 
-public static int findMin(int[] arr){
-int min = arr[0];
-int place = 0;
-for(int i = 0; i < arr.length; i++){
-  if(min > arr[i]){
-    min = arr[i];
-    place = i;
+  public static int findMin(int[] arr){
+  int min = arr[0];
+  int place = 0;
+  for(int i = 0; i < arr.length; i++){
+    if(min > arr[i]){
+      min = arr[i];
+      place = i;
+    }
+    //what about if they have the same frequency?
   }
-  //what about if they have the same frequency?
-}
-//System.out.println(min);
+  //System.out.println(min);
 
-//return(place+1); //index return
-return min;
-}//end findMin
+  //return(place+1); //index return
+  return min;
+  }//end findMin
 
 
-
+/*
+MEDIAN
+if theres an odd length there is only one number
+if theres an even length there are 2 numbers so find the average 
+*/
 
 
 
