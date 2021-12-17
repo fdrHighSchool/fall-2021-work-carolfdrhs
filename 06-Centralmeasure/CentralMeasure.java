@@ -18,7 +18,7 @@ public class CentralMeasure{
     int max = findMax(randomArray,1);
     //make an array of that size (fill all values with 0)
     int[] frequency = new int[max+1];
-    System.out.println(Arrays.toString(frequency));
+
 
     //tally the frequency of occurance of each unique number
     for(int i = 0; i < randomArray.length; i++){
@@ -26,35 +26,32 @@ public class CentralMeasure{
     }
     System.out.println(Arrays.toString(frequency));
 
-    System.out.println("The range is: " + range(randomArray));
-    System.out.println("The mode is: " + mode(frequency));
-    System.out.println("The mean is: " + average(randomArray));
+    // System.out.println("The range is: " + range(randomArray));
+    // System.out.println("The mode is: " + mode(frequency));
+    // System.out.println("The mean is: " + average(randomArray));
+    System.out.println(median(frequency,max));
 
   }//end main
 
 
-/*
-median
-make sorted list
-go through freq and add index based on the number
-*/
-
   public static int median(int[] arr, int max){
     int [] sort = new int[max];
-    for(int j = 0; j<arr.length; i++){
+    for(int j = 0; j<arr.length; j++){
       //go through the list
       for(int i = 1; i < arr[i]+1; i++){
         //add the index based on the number
-        sort[i-1] =
+        sort[i-1] = frequency[i]; //?
+
       }
     }
-
+    return 0;
   }
 
   public static int mode(int[] arr){
 
 
     //find which has the largest frequency
+
 
     //if findMax == 1 return no mode
     if (findMax(arr,2) == 1){
@@ -117,7 +114,7 @@ go through freq and add index based on the number
       min = arr[i];
       place = i;
     }
-    //what about if they have the same frequency?
+
   }
   //System.out.println(min);
 
