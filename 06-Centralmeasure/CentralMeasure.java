@@ -12,55 +12,63 @@ public class CentralMeasure{
     //print list check
     System.out.println(Arrays.toString(randomArray));
 
+    System.out.println("The range is: " + range(randomArray));
+    System.out.println("The mode is: " + mode(randomArray));
+    System.out.println("The mean is: " + average(randomArray));
+    System.out.println("The median is: "+ median(randomArray));
 
 
+  }//end main
+
+
+  public static double median(int[] arr){
+
+    for(int j = 0; j<arr.length; j++){
+      int min = arr[j];
+      int minIndex = j;
+      int temp = arr[j];
+      for(int i = j + 1; i < arr.length; i++){
+        if(arr[i] < min) {
+         min = arr[i];
+         minIndex = i;
+        }
+      }
+      arr[j] = min;
+      arr[minIndex] = temp;
+    }
+    // System.out.println(Arrays.toString(arr));
+    if (arr.length % 2 == 0){
+      return (double)(arr[arr.length/2] + arr[arr.length/2-1]) / 2;
+    }
+    else{
+      return arr[arr.length/2];
+    }
+
+}//end median
+
+  public static int mode(int[] arr){
     //find the max value of the list (check the randomArray list)
-    int max = findMax(randomArray,1);
+    int max = findMax(arr,1);
     //make an array of that size (fill all values with 0)
     int[] frequency = new int[max+1];
 
 
     //tally the frequency of occurance of each unique number
-    for(int i = 0; i < randomArray.length; i++){
-       frequency[randomArray[i]]++;
+    for(int i = 0; i < arr.length; i++){
+       frequency[arr[i]]++;
     }
-    System.out.println(Arrays.toString(frequency));
-
-    // System.out.println("The range is: " + range(randomArray));
-    // System.out.println("The mode is: " + mode(frequency));
-    // System.out.println("The mean is: " + average(randomArray));
-    System.out.println(median(frequency,max));
-
-  }//end main
-
-
-  public static int median(int[] arr, int max){
-    int [] sort = new int[max];
-    for(int j = 0; j<arr.length; j++){
-      //go through the list
-      for(int i = 1; i < arr[i]+1; i++){
-        //add the index based on the number
-        sort[i-1] = frequency[i]; //?
-
-      }
-    }
-    return 0;
-  }
-
-  public static int mode(int[] arr){
+    // System.out.println(Arrays.toString(frequency));
 
 
     //find which has the largest frequency
 
-
     //if findMax == 1 return no mode
-    if (findMax(arr,2) == 1){
+    if (findMax(frequency,2) == 1){
       return 0;
     }
     else{
-      return findMax(arr,2);
+      return findMax(frequency,2);
     }
-
 
 
 
@@ -82,23 +90,23 @@ public class CentralMeasure{
 
   public static int range(int[] arr){
     //find the max and min; subtract
-    return findMax(arr,1)-findMin(arr);
+    return findMax(arr,1)-findMin(arr,1);
 
   }//end range
 
 
-  public static int findMax(int[] arr,int choice){
+  public static int findMax(int[] arr,int place){
   int max = arr[0];
-  int place = 0;
+  int index = 0;
   for(int i = 0; i < arr.length; i++){
     if(max < arr[i]){
       max = arr[i];
-      place = i;
+      index = i;
     }
   }
   //System.out.println(max);
-  if (choice == 2){
-    return(place); //index return
+  if (place == 2){
+    return(index); //index return
   }
   else{
     return max;
@@ -106,20 +114,24 @@ public class CentralMeasure{
 }//end findMax
 
 
-  public static int findMin(int[] arr){
+  public static int findMin(int[] arr,int place){
   int min = arr[0];
-  int place = 0;
+  int index = 0;
   for(int i = 0; i < arr.length; i++){
     if(min > arr[i]){
       min = arr[i];
-      place = i;
+      index = i;
     }
 
   }
   //System.out.println(min);
+  if (place == 2){
+    return(index); //index return
+  }
+  else{
+    return min;
+  }
 
-  //return(place+1); //index return
-  return min;
   }//end findMin
 
 
