@@ -33,10 +33,9 @@ public class Exams {
     for(int i = 0; i<arr.length;i++){
       addExam[i] = arr[i];
     }
-    //adds the other exams
-    for(int i = arr.length; i<addExam.length;i++){
-      addExam[i] = (int)(Math.random() * 46) + 55;
-    }
+    //adds the other exam
+    addExam[addExam.length - 1] = (int)(Math.random() * 46) + 55;
+
     return addExam;
   }
 
