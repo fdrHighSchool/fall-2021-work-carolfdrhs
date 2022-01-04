@@ -21,9 +21,9 @@ public class Exams {
     } // end for loop
 
     // display the first 5 grades
-    System.out.println(Arrays.toString(sampleStudent));
-    System.out.println(Arrays.toString(addGrade(sampleStudent)));
-    System.out.println(Arrays.toString(curve(sampleStudent)));
+    System.out.println("Original: " + Arrays.toString(sampleStudent));
+    System.out.println("Add Sixth: " + Arrays.toString(addGrade(sampleStudent)));
+
   } // end main method
 
 
@@ -35,6 +35,7 @@ public class Exams {
     }
     //adds the other exam
     addExam[addExam.length - 1] = (int)(Math.random() * 46) + 55;
+    System.out.println("Curve: " + Arrays.toString(curve(addExam)));
 
     return addExam;
   }
@@ -42,13 +43,25 @@ public class Exams {
 
 //B) Write a method that takes the original set of 5 grades and replaces the lowest grade if the 6th grade is greater than it.If it is not, then the original 5 grades remain.
   public static int[] curve(int[] arr){
-    int sixth = (int)(Math.random() * 46) + 55;
-    for (int i = 0; i<arr.length; i++){
-      if(sixth > arr[i]){
-        arr[i] = sixth;
+    int sixth = arr[arr.length-1];
+    int least = arr[0];
+    int index = 0;
+    int[] curve = new int[arr.length-1];
+    for(int i = 0; i<curve.length;i++){
+      curve[i] = arr[i];
+    }
+
+    for (int i = 0; i<curve.length; i++){
+      if(curve[i] < least){
+        least = curve[i];
+        index = i;
       }
     }
-    return arr;
+    if(least < sixth){
+      curve[index] = sixth;
+
+    }
+    return curve;
   }
 
 
