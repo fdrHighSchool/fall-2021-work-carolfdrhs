@@ -12,11 +12,12 @@ public class binary{
   public static void main(String[] args){
     String restart = "";
     Scanner s = new Scanner(System.in);
-    do{ //loop bug where the intro prints twice
-      System.out.println("Type binary for binary->decimal and decimal for decimal->binary(quit to exit): ");
-      String converter = s.nextLine();
-      restart = converter.toLowerCase();
 
+
+    System.out.println("Type binary for binary->decimal and decimal for decimal->binary(quit to exit): ");
+    String converter = s.nextLine();
+
+    while(!converter.toLowerCase().equals("quit")){ //loop bug where the intro prints twice
       if(converter.equals("binary")){
         System.out.println("Input Binary: ");
         String binary = s.nextLine();
@@ -29,10 +30,11 @@ public class binary{
         System.out.println(decimal(decimal));
       }
 
-
+      System.out.println("binary or decimal");
+      converter = s.nextLine();
 
     }
-    while(!restart.equals("quit"));
+
 
   }
   public static int binary(String binary){
