@@ -12,13 +12,24 @@ public class binary{
   public static void main(String[] args){
     String restart = "";
     Scanner s = new Scanner(System.in);
-    do{
-      System.out.println("Input binary(quit to exit): ");
-      String binary = s.nextLine();
-      restart = binary.toLowerCase();
-      if (!binary.equals("quit")){
+    do{ //loop bug where the intro prints twice
+      System.out.println("Type binary for binary->decimal and decimal for decimal->binary(quit to exit): ");
+      String converter = s.nextLine();
+      restart = converter.toLowerCase();
+
+      if(converter.equals("binary")){
+        System.out.println("Input Binary: ");
+        String binary = s.nextLine();
         System.out.println(binary(binary));
       }
+
+      else if (converter.equals("decimal")){
+        System.out.println("Input Decimal: ");
+        int decimal = s.nextInt();
+        System.out.println(decimal(decimal));
+      }
+
+
 
     }
     while(!restart.equals("quit"));
@@ -33,6 +44,30 @@ public class binary{
        }
      }
      return total;
+  }
+
+
+  public static int decimal(int decimal){
+    int exponent = 0;
+    String binary = "1";
+    for(int i = 0; decimal>=Math.pow(2,i); i++){
+        exponent = i;
+    }
+    decimal -= Math.pow(2,exponent);
+    for(int i = 1; decimal != 0; i++){
+      if(Math.pow(2,exponent-i) <= decimal){
+        decimal -= Math.pow(2,exponent-i);
+        binary += "1";
+
+      }
+      else{
+        binary += "0";
+      }
+
+    }
+
+
+    return Integer.parseInt(binary);
   }
 
 
