@@ -22,13 +22,13 @@ public class Exams {
 
     // display the first 5 grades
     System.out.println(Arrays.toString(sampleStudent));
-    System.out.println(Arrays.toString(sixth(sampleStudent)));
+    System.out.println(Arrays.toString(addGrade(sampleStudent)));
     System.out.println(Arrays.toString(curve(sampleStudent)));
   } // end main method
 
 
 //A) Write a method that adds a 6th exam to the sample student’s set of grades.
-  public static int[] sixth(int[] arr){
+  public static int[] addGrade(int[] arr){
     int[] addExam = new int[arr.length+1];
     for(int i = 0; i<arr.length;i++){
       addExam[i] = arr[i];
