@@ -10,14 +10,12 @@ Your program should:
 */
 public class binary{
   public static void main(String[] args){
-    String restart = "";
     Scanner s = new Scanner(System.in);
-
-
     System.out.println("Type binary for binary->decimal and decimal for decimal->binary(quit to exit): ");
     String converter = s.nextLine();
+    boolean restart = true;
 
-    while(!converter.toLowerCase().equals("quit")){ //loop bug where the intro prints twice
+    while(restart){ //loop bug where the intro prints twice
       if(converter.equals("binary")){
         System.out.println("Input Binary: ");
         String binary = s.nextLine();
@@ -32,6 +30,9 @@ public class binary{
 
       System.out.println("binary or decimal");
       converter = s.nextLine();
+      if(converter.toLowerCase().equals("quit")){
+        restart = false;
+      }
 
     }
 

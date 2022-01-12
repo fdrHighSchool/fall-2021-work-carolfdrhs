@@ -10,26 +10,17 @@ a 6th test has been introduced.
 
 public class Exams {
   public static void main(String[] args) {
-    int[][] studentGrades = new int[15][5];
+    // sample student with 5 slots for grades
+    int[] sampleStudent = new int[5];
 
+    // fill up the "gradebook"
+    for(int i = 0; i < sampleStudent.length; i++) {
+      sampleStudent[i] = (int)(Math.random() * 46) + 55;
+    } // end for loop
 
-    for(int i = 0; i<studentGrades.length; i++){
-      for(int j = 0; j<studentGrades[i].length;j++){
-        studentGrades[i][j] =(int)(Math.random() * 46) + 55;
-      }
-    }
-    System.out.println(Arrays.deepToString(studentGrades));
-    // // sample student with 5 slots for grades
-    // int[] sampleStudent = new int[5];
-    //
-    // // fill up the "gradebook"
-    // for(int i = 0; i < sampleStudent.length; i++) {
-    //   sampleStudent[i] = (int)(Math.random() * 46) + 55;
-    // } // end for loop
-    //
-    // // display the first 5 grades
-    // System.out.println("Original: " + Arrays.toString(sampleStudent));
-    // System.out.println("Add Sixth: " + Arrays.toString(addGrade(sampleStudent)));
+    // display the first 5 grades
+    System.out.println("Original: " + Arrays.toString(sampleStudent));
+    System.out.println("Add Sixth: " + Arrays.toString(addGrade(sampleStudent)));
 
   } // end main method
 
