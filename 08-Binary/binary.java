@@ -11,7 +11,7 @@ Your program should:
 public class binary{
   public static void main(String[] args){
     Scanner s = new Scanner(System.in);
-    System.out.println("Type binary for binary->decimal and decimal for decimal->binary(quit to exit): ");
+    System.out.println("Type binary for binary->decimal and decimal for decimal->binary: ");
     String converter = s.nextLine();
     boolean restart = true;
 
@@ -22,13 +22,13 @@ public class binary{
         System.out.println(binary(binary));
       }
 
-      else if (converter.equals("decimal")){
+      else if(converter.equals("decimal")){
         System.out.println("Input Decimal: ");
         int decimal = s.nextInt();
         System.out.println(decimal(decimal));
       }
 
-      System.out.println("binary or decimal");
+      System.out.println("binary or decimal or quit");
       converter = s.nextLine();
       if(converter.toLowerCase().equals("quit")){
         restart = false;
