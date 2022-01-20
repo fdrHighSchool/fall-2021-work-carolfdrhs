@@ -13,7 +13,9 @@ public class connectfour {
     displayBoard(board);
     String letter = "[X]";
     boolean win = true;
-
+    int round = 0;
+    //System.out.println(board.length); 6
+    //System.out.println(board[0].length); 7
     while(win){
       System.out.println("Enter a column number: ");
       int userCol = s.nextInt(); //1 greater than actual index cause starts at 1 instead of 0
@@ -28,26 +30,60 @@ public class connectfour {
       displayBoard(board);
 
       //alternate between X and O
-      if(letter.equals("[X]")){
+      if(round%2 == 0){//even
         letter = "[O]";
       }
       else{
         letter = "[X]";
       }
 
-      //win conditions?
+      round++;
+      System.out.println(round);
+    //  win = vertical(board,userCol,round);
 
+
+    }//end while
+
+  }//end main
+// win conditions?
+  public static boolean vertical(String[][] board, int userInput, int round){
+    //check if 4 pieces were put into a column?
+    int win = 0;
+    if(round%2 == 0){
+      for(int i = 0; i>board.length; i++){
+        if(board[i][userInput].equals("[X]")){
+          win++;
+          System.out.println(win);
+        }
+        else{
+          win = 0;
+        }
+      }
+    }
+    else{
+      for(int i = 0; i>board.length; i++){
+        if(board[i][userInput].equals("[O]")){
+          win++;
+          System.out.println(win);
+        }
+        else{
+          win = 0;
+        }
+      }
 
     }
+    if(win == 4){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
 
 
 
 
 
-
-
-
-  } // end main method
 
 
   public static void fillBoard(String[][] board) {
