@@ -38,22 +38,26 @@ public class connectfour {
       }
 
       round++;
-      System.out.println(round);
-    //  win = vertical(board,userCol,round);
-
+      win = vertical(board,userCol,round);
 
     }//end while
+    if(round%2 == 0){
+      System.out.println("win player 2(O)");
+    }
+    else{
+      System.out.println("win player 1(X)");
+    }
+
 
   }//end main
 // win conditions?
   public static boolean vertical(String[][] board, int userInput, int round){
     //check if 4 pieces were put into a column?
     int win = 0;
-    if(round%2 == 0){
-      for(int i = 0; i>board.length; i++){
+    if(round%2 == 0){//if X
+      for(int i = 0; i<board.length; i++){//loop the column
         if(board[i][userInput].equals("[X]")){
           win++;
-          System.out.println(win);
         }
         else{
           win = 0;
@@ -61,10 +65,9 @@ public class connectfour {
       }
     }
     else{
-      for(int i = 0; i>board.length; i++){
+      for(int i = 0; i<board.length; i++){
         if(board[i][userInput].equals("[O]")){
           win++;
-          System.out.println(win);
         }
         else{
           win = 0;
@@ -72,13 +75,16 @@ public class connectfour {
       }
 
     }
-    if(win == 4){
+    if(win == 3){
       return false;
     }
     else{
       return true;
     }
   }
+
+
+  
 
 
 
