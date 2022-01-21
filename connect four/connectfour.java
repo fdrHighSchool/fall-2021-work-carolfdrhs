@@ -17,7 +17,13 @@ public class connectfour {
     //System.out.println(board.length); 6
     //System.out.println(board[0].length); 7
     while(win){
-      System.out.println("Enter a column number: ");
+      if(letter.equals("[X]")){
+        System.out.println("Player 1, enter a column number: ");
+      }
+      else{
+        System.out.println("Player 2, enter a column number: ");
+      }
+
       int userCol = s.nextInt(); //1 greater than actual index cause starts at 1 instead of 0
 
       //loop to check for the empty space
@@ -38,7 +44,7 @@ public class connectfour {
       }
 
       round++;
-      win = vertical(board,userCol,round);
+      win = vertical(board,userCol,letter);
 
     }//end while
     if(round%2 == 0){
@@ -51,31 +57,20 @@ public class connectfour {
 
   }//end main
 // win conditions?
-  public static boolean vertical(String[][] board, int userInput, int round){
+  public static boolean vertical(String[][] board, int userInput, String letter){
     //check if 4 pieces were put into a column?
     int win = 0;
-    if(round%2 == 0){//if X
       for(int i = 0; i<board.length; i++){//loop the column
-        if(board[i][userInput].equals("[X]")){
+        if(board[i][userInput].equals(letter)){//bug with if statement
           win++;
-        }
-        else{
-          win = 0;
-        }
-      }
-    }
-    else{
-      for(int i = 0; i<board.length; i++){
-        if(board[i][userInput].equals("[O]")){
-          win++;
+          System.out.println(win);
         }
         else{
           win = 0;
         }
       }
 
-    }
-    if(win == 3){
+    if(win == 4){
       return false;
     }
     else{
@@ -84,7 +79,6 @@ public class connectfour {
   }
 
 
-  
 
 
 
