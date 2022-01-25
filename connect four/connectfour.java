@@ -11,42 +11,43 @@ public class connectfour {
 
     fillBoard(board);
     displayBoard(board);
+
+
+
     String letter = "[X]";
     boolean win = true;
     int round = 0;
     //System.out.println(board.length); 6
     //System.out.println(board[0].length); 7
+
+
     while(win){
       if(letter.equals("[X]")){
-        System.out.println("Player 1, enter a column number: ");
+        System.out.println("Player X, enter a column number: ");
       }
       else{
-        System.out.println("Player 2, enter a column number: ");
+        System.out.println("Player O, enter a column number: ");
       }
+      int userCol = s.nextInt();
 
-      int userCol = s.nextInt(); //1 greater than actual index cause starts at 1 instead of 0
+      playRound(userCol,board,letter);
 
-      //loop to check for the empty space
-      for(int i = board.length-1; i > -1;i--){
-        if(board[i][userCol-1].equals("[ ]")){
-          board[i][userCol-1] = letter;
-          break;
-        }
-      }
-      displayBoard(board);
-
-      //alternate between X and O
-      if(round%2 == 0){//even
-        letter = "[O]";
-      }
-      else{
-        letter = "[X]";
-      }
 
       round++;
       win = vertical(board,userCol,letter);
 
+      //alternate between X and O
+      if(round%2 == 0){//even
+        letter = "[X]";
+      }
+      else{
+        letter = "[O]";
+      }
+
     }//end while
+
+
+
     if(round%2 == 0){
       System.out.println("win player 2(O)");
     }
@@ -56,16 +57,41 @@ public class connectfour {
 
 
   }//end main
+
+public static void playRound(int userCol, String[][] board, String letter){
+  //loop to check for the empty space
+  for(int i = board.length-1; i > -1;i--){
+    if(board[i][userCol-1].equals("[ ]")){
+      board[i][userCol-1] = letter;
+      break;
+    }
+  }
+  displayBoard(board);
+
+
+}
+
+
+
+
+
+
+
+
 // win conditions?
+
+
   public static boolean vertical(String[][] board, int userInput, String letter){
     //check if 4 pieces were put into a column?
     int win = 0;
       for(int i = 0; i<board.length; i++){//loop the column
         if(board[i][userInput].equals(letter)){//bug with if statement
+          System.out.println("if");
           win++;
           System.out.println(win);
         }
         else{
+          System.out.println("else");
           win = 0;
         }
       }
