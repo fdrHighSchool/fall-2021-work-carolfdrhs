@@ -12,15 +12,11 @@ public class connectfour {
     fillBoard(board);
     displayBoard(board);
 
-
-
     String letter = "[X]";
     boolean win = true;
     int round = 0;
     //System.out.println(board.length); 6
     //System.out.println(board[0].length); 7
-
-
     while(win){
       if(letter.equals("[X]")){
         System.out.println("Player X, enter a column number: ");
@@ -29,10 +25,7 @@ public class connectfour {
         System.out.println("Player O, enter a column number: ");
       }
       int userCol = s.nextInt();
-
       playRound(userCol,board,letter);
-
-
       round++;
       win = vertical(board,userCol,letter);
 
@@ -43,10 +36,7 @@ public class connectfour {
       else{
         letter = "[O]";
       }
-
     }//end while
-
-
 
     if(round%2 == 0){
       System.out.println("win player 2(O)");
@@ -58,23 +48,16 @@ public class connectfour {
 
   }//end main
 
-public static void playRound(int userCol, String[][] board, String letter){
-  //loop to check for the empty space
-  for(int i = board.length-1; i > -1;i--){
-    if(board[i][userCol-1].equals("[ ]")){
-      board[i][userCol-1] = letter;
-      break;
+  public static void playRound(int userCol, String[][] board, String letter){
+    //loop to check for the empty space
+    for(int i = board.length-1; i > -1;i--){
+      if(board[i][userCol-1].equals("[ ]")){
+        board[i][userCol-1] = letter;
+        break;
+      }
     }
+    displayBoard(board);
   }
-  displayBoard(board);
-
-
-}
-
-
-
-
-
 
 
 
@@ -82,27 +65,23 @@ public static void playRound(int userCol, String[][] board, String letter){
 
 
   public static boolean vertical(String[][] board, int userInput, String letter){
-    //check if 4 pieces were put into a column?
     int win = 0;
-      for(int i = 0; i<board.length; i++){//loop the column
-        if(board[i][userInput].equals(letter)){//bug with if statement
-          System.out.println("if");
-          win++;
-          System.out.println(win);
-        }
-        else{
-          System.out.println("else");
-          win = 0;
-        }
+    for(int i = 0;i<board.length;i++){
+      if(board[i][userInput-1].equals(letter)){//bug with if statement
+        win++;
+        System.out.println(win);
       }
-
+      else{
+        win = 0;
+      }
+    }
     if(win == 4){
-      return false;
-    }
+       return false;
+     }
     else{
-      return true;
-    }
-  }
+       return true;
+     }
+ }
 
 
 
