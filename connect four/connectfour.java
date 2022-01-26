@@ -38,6 +38,8 @@ public class connectfour {
       }
     }//end while
 
+
+    //win statements
     if(round%2 == 0){
       System.out.println("win player 2(O)");
     }
@@ -47,49 +49,6 @@ public class connectfour {
 
 
   }//end main
-
-  public static void playRound(int userCol, String[][] board, String letter){
-    //loop to check for the empty space
-    for(int i = board.length-1; i > -1;i--){
-      if(board[i][userCol-1].equals("[ ]")){
-        board[i][userCol-1] = letter;
-        break;
-      }
-    }
-    displayBoard(board);
-  }
-
-
-
-// win conditions?
-
-
-  public static boolean vertical(String[][] board, int userInput, String letter){
-    int win = 0;
-    for(int i = 0;i<board.length;i++){
-      if(board[i][userInput-1].equals(letter)){//bug with if statement
-        win++;
-        System.out.println(win);
-      }
-      else{
-        win = 0;
-      }
-    }
-    if(win == 4){
-       return false;
-     }
-    else{
-       return true;
-     }
- }
-
-
-
-
-
-
-
-
 
   public static void fillBoard(String[][] board) {
     for(int row = 0; row < board.length; row++) {
@@ -108,6 +67,47 @@ public class connectfour {
       System.out.println();
     } // end outer for loop
   } // end displayBoard method
+
+  public static void playRound(int userCol, String[][] board, String letter){
+    //loop to check for the empty space
+    for(int i = board.length-1; i > -1;i--){
+      if(board[i][userCol-1].equals("[ ]")){
+        board[i][userCol-1] = letter;
+        break;
+      }
+    }
+    displayBoard(board);
+  }
+
+//win conditions
+  public static boolean vertical(String[][] board, int userInput, String letter){
+    int win = 0;
+    for(int i = 0;i<board.length;i++){
+      if(board[i][userInput-1].equals(letter)){//bug with if statement
+        win++;
+        System.out.println(win);
+        if(win == 4){
+          return false;
+        }
+      }
+      else{
+        win = 0;
+      }
+    }
+    if(win == 4){
+       return false;
+     }
+    else{
+       return true;
+     }
+ }
+
+  // public static boolean horizontal(String[][] board, int userInput, String letter){
+  //   int win = 0;
+  //   for()
+  //
+  // }
+
 
 
 } // end class
