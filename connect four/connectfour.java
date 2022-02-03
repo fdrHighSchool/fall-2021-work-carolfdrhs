@@ -84,9 +84,9 @@ public class connectfour {
     else if(horizontal(board,userCol,letter,place) == false){
       return false;
     }
-    // else if(diagonal == false){
-    //   return false;
-    // }
+    else if(diagonal(board,userCol,letter,place) == false){
+      return false;
+    }
     return true;
   }
 
@@ -96,7 +96,6 @@ public class connectfour {
     for(int i = 0;i<board.length;i++){
       if(board[i][userInput-1].equals(letter)){
         win++;
-        System.out.println(win);
         if(win == 4){
           return false;
         }
@@ -133,9 +132,60 @@ public class connectfour {
        return true;
      }
   }
-  // public static boolean diagonal(String[][] board, int userInput, String letter, int place){
-  //   int win = 0;
-  // }
+  public static boolean diagonal(String[][] board, int userInput, String letter, int place){
+    int win = 0;
+    userInput--;
+    int x = place;
+    int y = userInput;
+
+
+      //endpoint
+      for(int i = 0;x+i < 6 && y-i < 7 && x+i > -1 && y-i > -1; i++){
+        x += i;
+        y -= i;
+
+        System.out.println("pos x " + x);
+        System.out.println("pos y " + y);
+
+      }
+
+
+      //checks the positive slope for win
+      for(int i = 0; x+i < 6 && y-i < 7 && x-i > -1 && y+i > -1; i++){
+        if(board[x-i][y+i].equals(letter)){
+          win++;
+          if(win == 4){
+            return false;
+          }
+        }
+        else{
+          win = 0;
+        }
+      }
+
+
+
+    x = place;
+    y = userInput-1;
+    //endpoint
+    for(int i = 0;x-i < 6 && y-i < 7 && x-i > -1 && y-i > -1; i++){
+      x = place-i;
+      y = userInput-1-i;
+
+    }
+
+    //checks the negative slope for win
+
+
+
+     if(win == 4){
+        return false;
+      }
+     else{
+        return true;
+      }
+
+  }
 
 
 
