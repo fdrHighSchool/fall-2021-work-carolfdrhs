@@ -25,9 +25,8 @@ public class connectfour {
         System.out.println("Player O, enter a column number: ");
       }
       int userCol = s.nextInt();
-      playRound(userCol,board,letter);
       round++;
-      win = vertical(board,userCol,letter);
+      win = playRound(userCol,board,letter);
 
       //alternate between X and O
       if(round%2 == 0){//even
@@ -68,22 +67,34 @@ public class connectfour {
     } // end outer for loop
   } // end displayBoard method
 
-  public static void playRound(int userCol, String[][] board, String letter){
+  public static boolean playRound(int userCol, String[][] board, String letter){
     //loop to check for the empty space
+    int place = 0;
     for(int i = board.length-1; i > -1;i--){
       if(board[i][userCol-1].equals("[ ]")){
         board[i][userCol-1] = letter;
+        place = i;
         break;
       }
     }
     displayBoard(board);
+    if(vertical(board,userCol,letter) == false){
+      return false;
+    }
+    else if(horizontal(board,userCol,letter,place) == false){
+      return false;
+    }
+    // else if(diagonal == false){
+    //   return false;
+    // }
+    return true;
   }
 
 //win conditions
   public static boolean vertical(String[][] board, int userInput, String letter){
     int win = 0;
     for(int i = 0;i<board.length;i++){
-      if(board[i][userInput-1].equals(letter)){//bug with if statement
+      if(board[i][userInput-1].equals(letter)){
         win++;
         System.out.println(win);
         if(win == 4){
@@ -102,11 +113,29 @@ public class connectfour {
      }
  }
 
-  // public static boolean horizontal(String[][] board, int userInput, String letter){
-  //   int win = 0;
-  //   for()
-  //
-  // }
+  public static boolean horizontal(String[][] board, int userInput, String letter, int place){
+    int win = 0;
+    for(int i = 0; i<board[0].length;i++){
+      if(board[place][i].equals(letter)){
+        win++;
+        if(win == 4){
+          return false;
+        }
+      }
+      else{
+        win = 0;
+      }
+    }
+    if(win == 4){
+       return false;
+     }
+    else{
+       return true;
+     }
+  }
+  public static boolean diagonal(String[][] board, int userInput, String letter, int place){
+    int win = 0;
+  }
 
 
 
