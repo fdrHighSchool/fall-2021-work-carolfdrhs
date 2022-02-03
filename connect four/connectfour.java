@@ -133,9 +133,9 @@ public class connectfour {
        return true;
      }
   }
-  public static boolean diagonal(String[][] board, int userInput, String letter, int place){
-    int win = 0;
-  }
+  // public static boolean diagonal(String[][] board, int userInput, String letter, int place){
+  //   int win = 0;
+  // }
 
 
 
