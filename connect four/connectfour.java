@@ -15,8 +15,7 @@ public class connectfour {
     String letter = "[X]";
     boolean win = true;
     int round = 0;
-    //System.out.println(board.length); 6
-    //System.out.println(board[0].length); 7
+
     while(win){
       if(letter.equals("[X]")){
         System.out.println("Player X, enter a column number: ");
@@ -134,24 +133,19 @@ public class connectfour {
   }
   public static boolean diagonal(String[][] board, int userInput, String letter, int place){
     int win = 0;
-    userInput--;
     int x = place;
     int y = userInput;
-
+    int count = 0;
 
       //endpoint
-      for(int i = 0;x+i < 6 && y-i < 7 && x+i > -1 && y-i > -1; i++){
-        x += i;
-        y -= i;
-
-        System.out.println("pos x " + x);
-        System.out.println("pos y " + y);
-
+      while(x+count < 5 && y-count < 6 && x+count > -1 && y-count > -1){
+        count++;
       }
-
+      x = place + count;
+      y = userInput-1-count;
 
       //checks the positive slope for win
-      for(int i = 0; x+i < 6 && y-i < 7 && x-i > -1 && y+i > -1; i++){
+      for(int i = 0; x-i < 6 && y+i < 7 && x-i > -1 && y+i > -1; i++){
         if(board[x-i][y+i].equals(letter)){
           win++;
           if(win == 4){
@@ -164,19 +158,29 @@ public class connectfour {
       }
 
 
+      count = 0;
+      x = place;
+      y = userInput;
 
-    x = place;
-    y = userInput-1;
     //endpoint
-    for(int i = 0;x-i < 6 && y-i < 7 && x-i > -1 && y-i > -1; i++){
-      x = place-i;
-      y = userInput-1-i;
-
+    while(x+count < 5 && y+count < 6 && x+count > -1 && y+count > -1){
+      count++;
     }
 
+    x = place + count;
+    y = userInput-1-count;
     //checks the negative slope for win
-
-
+    for(int i = 0; x-i < 6 && y-i < 7 && x-i > -1 && y-i > -1; i++){
+      if(board[x-i][y-i].equals(letter)){
+        win++;
+        if(win == 4){
+          return false;
+        }
+      }
+      else{
+        win = 0;
+      }
+    }
 
      if(win == 4){
         return false;
